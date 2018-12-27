@@ -62,10 +62,10 @@ public class ExampleClient extends WebSocketClient {
 
         while(true){
             try {
-                Thread.sleep(13000);
+                Thread.sleep(10000);
                 send("ping");
 
-                Thread.sleep(13000);
+                //Thread.sleep(new Random().nextInt(1000) * 1000);
 
                 String chatMessage = "{\n" +
                         "  \"businessData\" : {\n" +
@@ -81,7 +81,10 @@ public class ExampleClient extends WebSocketClient {
                         "  \"messageType\" : \"chat\"\n" +
                         "}";
 
-                send(chatMessage);
+                if(new Random().nextInt(100) % 20 == 0){ //100里面1个数，小于等于10的概率就是10%
+                    send(chatMessage);
+                }
+
 
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -107,8 +110,10 @@ public class ExampleClient extends WebSocketClient {
     }
 
     public static void main(String[] args) throws URISyntaxException {
-        ExampleClient client = new ExampleClient(new URI("ws://192.168.88.35:15247/websocket/24321165&49999&2/an7q2onzwr6cj89zux3pyjsz6j54mw4o")); // more about drafts here: http://github.com/TooTallNate/Java-WebSocket/wiki/Drafts
-        client.connect();
+        //ExampleClient client = new ExampleClient(new URI("ws://192.168.88.35:15247/websocket/24321165&49999&2/an7q2onzwr6cj89zux3pyjsz6j54mw4o")); // more about drafts here: http://github.com/TooTallNate/Java-WebSocket/wiki/Drafts
+        //client.connect();
+        System.out.println(new Random().nextInt(1000));
+
     }
 
 

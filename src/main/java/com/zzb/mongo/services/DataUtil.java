@@ -26,7 +26,7 @@ public class DataUtil {
     @Value("${thread.pageIndex:1}")
     private int pageIndex;
 
-    @Value("${test.ip:192.168.88.35}")
+    @Value("${test.ip:192.168.88.210}")
     private String ip;
 
     @Value("${test.liveId:24321165}")
@@ -52,7 +52,7 @@ public class DataUtil {
             }
 
             try {
-                Thread.sleep(200);
+                Thread.sleep(10);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
