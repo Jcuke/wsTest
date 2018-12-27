@@ -2,6 +2,7 @@ package com.zzb.mongo.base;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -9,7 +10,10 @@ import org.springframework.data.mongodb.core.query.Update;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public abstract class MongodbBaseDao<T> {
 
@@ -179,6 +183,30 @@ public abstract class MongodbBaseDao<T> {
         }
     }
 
+
+    public PageResult pageQueryManyCriteria(Query query, Class clzz, Integer pageSize, Integer pageNum) {
+        //分页逻辑
+        Long total = mongoTemplate.count(query, clzz);
+        final Integer pages = (int) Math.ceil(total / (double) pageSize);
+        if (pageNum <= 0 || pageNum > pages) {
+            pageNum = FIRST_PAGE_NUM;
+        }
+
+        int skip = pageSize * (pageNum - 1);
+        query.skip(skip).limit(pageSize);
+        //分页逻辑有缺陷，若query内包含addCriteria 就会报重复使用错误，这里更改为：
+        ArrayList arrayList = new ArrayList();
+        arrayList.add(new Sort.Order(Sort.Direction.ASC, ID));
+        final List<T> entityList = mongoTemplate.find(query.with(new Sort(arrayList)), clzz);
+
+        final PageResult<Object> pageResult = new PageResult<>();
+        pageResult.setTotalRowsCount(total.intValue());
+        pageResult.setTotalPageCount(pages);
+        pageResult.setPageSize(pageSize);
+        pageResult.setPageNumber(pageNum);
+        pageResult.setDataList(entityList.stream().map(Function.identity()).collect(Collectors.toList()));
+        return pageResult;
+    }
 
 
 }

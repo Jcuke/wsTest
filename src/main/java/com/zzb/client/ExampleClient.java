@@ -17,14 +17,16 @@ import java.util.Random;
 public class ExampleClient extends WebSocketClient {
 
     private String userId;
+    private String liveId;
 
     public ExampleClient(URI serverUri, Draft draft) {
         super(serverUri, draft);
     }
 
-    public ExampleClient(URI serverURI, String userId) {
+    public ExampleClient(URI serverURI, String userId, String liveId) {
         super(serverURI);
         this.userId = userId;
+        this.liveId = liveId;
     }
 
     public ExampleClient(URI serverURI) {
@@ -44,7 +46,7 @@ public class ExampleClient extends WebSocketClient {
         String enterMessage = "{\n" +
                 "  \"businessData\" : {\n" +
                 "    \"isReconnect\" : \"0\",\n" +
-                "    \"liveId\" : \"24321165\",\n" +
+                "    \"liveId\" : \""+ liveId +"\",\n" +
                 "    \"userId\" : \""+ userId +"\",\n" +
                 "    \"enterType\" : \"2\",\n" +
                 "    \"expGrade\" : \"1\"\n" +
@@ -60,17 +62,17 @@ public class ExampleClient extends WebSocketClient {
 
         while(true){
             try {
-                Thread.sleep(500);
+                Thread.sleep(13000);
                 send("ping");
 
-                Thread.sleep(500);
+                Thread.sleep(13000);
 
                 String chatMessage = "{\n" +
                         "  \"businessData\" : {\n" +
                         "    \"userId\" : \""+ userId +"\",\n" +
                         "    \"content\" : \""+ genRandomString(8) +  getCurrentTime() +"\",\n" +
                         "    \"userName\" : \""+ userId +"\",\n" +
-                        "    \"liveId\" : \""+ 24321165 +"\",\n" +
+                        "    \"liveId\" : \""+ "+ liveId +" +"\",\n" +
                         "    \"role\" : \"2\",\n" +
                         "    \"avatar\" : \"http:\\/\\/f.hiphotos.baidu.com\\/zhidao\\/pic\\/item\\/b03533fa828ba61e652e1c764234970a314e59a3.jpg\",\n" +
                         "    \"expGrade\" : \"1\",\n" +
