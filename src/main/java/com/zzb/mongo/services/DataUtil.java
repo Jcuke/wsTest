@@ -52,16 +52,14 @@ public class DataUtil {
             }
 
             try {
-                Thread.sleep(10);
+                Thread.sleep(5);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
             String wsUrl = "ws://"+ ip +":15247/websocket/"+ liveId +"&"+ tokenInfo.getUserId() +"&2/" + tokenInfo.getToken();
-            ExampleClient client = null;
             try {
-                client = new ExampleClient(new URI(wsUrl), tokenInfo.getUserId(), liveId);
-                client.connect();
+                new ExampleClient(new URI(wsUrl), tokenInfo.getUserId(), liveId).connect();
             } catch (URISyntaxException e) {
                 e.printStackTrace();
             }

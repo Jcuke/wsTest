@@ -62,10 +62,15 @@ public class ExampleClient extends WebSocketClient {
 
         while(true){
             try {
-                Thread.sleep(10000);
+                Thread.sleep(new Random().nextInt(5) * 1000);
                 send("ping");
 
+                //Thread.sleep(10000);
+
                 //Thread.sleep(new Random().nextInt(1000) * 1000);
+
+
+                Thread.sleep(new Random().nextInt(10) * 1000);
 
                 String chatMessage = "{\n" +
                         "  \"businessData\" : {\n" +
@@ -81,7 +86,7 @@ public class ExampleClient extends WebSocketClient {
                         "  \"messageType\" : \"chat\"\n" +
                         "}";
 
-                if(new Random().nextInt(100) % 20 == 0){ //100里面1个数，小于等于10的概率就是10%
+                if(new Random().nextInt(150) % 25 == 0){ //100里面1个数，小于等于10的概率就是10%
                     send(chatMessage);
                 }
 
