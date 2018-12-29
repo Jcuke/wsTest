@@ -57,12 +57,18 @@ public class DataUtil {
                 e.printStackTrace();
             }
 
-            String wsUrl = "ws://"+ ip +":15247/websocket/"+ liveId +"&"+ tokenInfo.getUserId() +"&2/" + tokenInfo.getToken();
-            try {
-                new ExampleClient(new URI(wsUrl), tokenInfo.getUserId(), liveId).connect();
-            } catch (URISyntaxException e) {
-                e.printStackTrace();
-            }
+            new Thread(() -> {
+                String wsUrl = "ws://"+ ip +":15247/websocket/"+ liveId +"&"+ tokenInfo.getUserId() +"&2/" + tokenInfo.getToken();
+                try {
+                    ExampleClient client = new ExampleClient(new URI(wsUrl), tokenInfo.getUserId(), liveId);
+                    client.setConnectionLostTimeout(1000);
+                    client.connect();
+                } catch (URISyntaxException e) {
+                    e.printStackTrace();
+                }
+            }).start();
+
+
         }
         //list.stream().forEach(tokenInfoConsumer->{
         //
