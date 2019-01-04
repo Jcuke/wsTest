@@ -63,12 +63,11 @@ public class ExampleClient extends WebSocketClient {
 
         while(true){
             try {
-                //Thread.sleep(new Random().nextInt(5) * 1000);
+                Thread.sleep(new Random().nextInt(10) * 1000);
+
                 send("ping");
 
-                Thread.sleep(2000);
-
-                //Thread.sleep(new Random().nextInt(1000) * 1000);
+                Thread.sleep(new Random().nextInt(10) * 1000);
 
 
                 //Thread.sleep(new Random().nextInt(10) * 1000);
@@ -87,10 +86,10 @@ public class ExampleClient extends WebSocketClient {
                         "  \"messageType\" : \"chat\"\n" +
                         "}";
 
-                //if(new Random().nextInt(150) % 25 == 0){ //100里面1个数，小于等于10的概率就是10%
+                if(new Random().nextInt(1000) % 21 == 0){ //100里面1个数，小于等于10的概率就是10%
                     send(chatMessage);
-                System.out.println(chatMessage);
-                //}
+                //System.out.println(chatMessage);
+                }
 
 
             } catch (InterruptedException e) {
@@ -143,7 +142,7 @@ public class ExampleClient extends WebSocketClient {
 
                 //new ExampleClient(new URI("ws://120.79.193.155:15247/websocket/07403030&1111&2/wk5i4ngoouqyw3ipdc3nqpmokye2okcd"), "1111", "07403030").connect();
                 ExampleClient client = new ExampleClient(new URI("ws://192.168.88.210:15247/websocket/24321165&EA86EF&2/9zeht7acggogq0oaml27o6q7o3s8bmnv"), "EA86EF", "24321165");
-                client.setConnectionLostTimeout(300);
+                client.setConnectionLostTimeout(20);
                 client.connect();
 
             } catch (URISyntaxException e) {
