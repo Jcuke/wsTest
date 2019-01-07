@@ -63,11 +63,11 @@ public class ExampleClient extends WebSocketClient {
 
         while(true){
             try {
-                Thread.sleep(new Random().nextInt(10) * 1000);
+                Thread.sleep(new Random().nextInt(50) * 1000);
 
                 send("ping");
 
-                Thread.sleep(new Random().nextInt(10) * 1000);
+                Thread.sleep(new Random().nextInt(30) * 1000);
 
 
                 //Thread.sleep(new Random().nextInt(10) * 1000);
@@ -131,7 +131,7 @@ public class ExampleClient extends WebSocketClient {
         // if the error is fatal then onClose will be called additionally
     }
 
-    public static void main(String[] args) throws URISyntaxException {
+    public static void main1(String[] args) throws URISyntaxException {
         //ExampleClient client = new ExampleClient(new URI("ws://192.168.88.35:15247/websocket/24321165&49999&2/an7q2onzwr6cj89zux3pyjsz6j54mw4o")); // more about drafts here: http://github.com/TooTallNate/Java-WebSocket/wiki/Drafts
         //ExampleClient client = new ExampleClient(new URI("ws://120.79.193.155:15247/websocket/31797277&516&2/lif7c5brjpb19pzi2pmd5cb71b0f5xfn"), "516", "31797277");
         //client.connect();
@@ -170,4 +170,7 @@ public class ExampleClient extends WebSocketClient {
         return simpleDateFormat.format(new Date());
     }
 
+    public static void main(String[] args) {
+        System.out.println(new Random().nextInt(10));
+    }
 }
