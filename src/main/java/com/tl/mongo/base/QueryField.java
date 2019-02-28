@@ -1,4 +1,4 @@
-package com.zzb.mongo.base;
+package com.tl.mongo.base;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

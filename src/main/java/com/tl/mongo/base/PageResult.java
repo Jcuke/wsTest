@@ -1,4 +1,4 @@
-package com.zzb.mongo.base;
+package com.tl.mongo.base;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

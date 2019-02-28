@@ -1,8 +1,8 @@
-package com.zzb.mongo.services;
+package com.tl.mongo.services;
 
-import com.zzb.client.ExampleClient;
-import com.zzb.mongo.dao.TokenInfoDao;
-import com.zzb.mongo.entity.TokenInfo;
+import com.tl.client.ExampleClient;
+import com.tl.mongo.dao.TokenInfoDao;
+import com.tl.mongo.entity.TokenInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.mongodb.core.query.Query;

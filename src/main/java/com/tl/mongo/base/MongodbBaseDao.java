@@ -1,4 +1,4 @@
-package com.zzb.mongo.base;
+package com.tl.mongo.base;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

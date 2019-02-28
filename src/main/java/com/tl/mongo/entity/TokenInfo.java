@@ -1,6 +1,6 @@
-package com.zzb.mongo.entity;
+package com.tl.mongo.entity;
 
-import com.zzb.mongo.base.QueryField;
+import com.tl.mongo.base.QueryField;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 

@@ -1,4 +1,4 @@
-package com.zzb.mongo.base;
+package com.tl.mongo.base;
 
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.util.StringUtils;

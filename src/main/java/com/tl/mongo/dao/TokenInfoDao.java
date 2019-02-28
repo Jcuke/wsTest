@@ -1,7 +1,7 @@
-package com.zzb.mongo.dao;
+package com.tl.mongo.dao;
 
-import com.zzb.mongo.base.MongodbBaseDao;
-import com.zzb.mongo.entity.TokenInfo;
+import com.tl.mongo.base.MongodbBaseDao;
+import com.tl.mongo.entity.TokenInfo;
 import org.springframework.stereotype.Repository;
 
 /**
